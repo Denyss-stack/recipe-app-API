@@ -13,7 +13,7 @@ class CommandTests(SimpleTestCase):
     """Test command"""
     def test_wait_for_db_ready(self, patched_check):
         """Tests waiting for database if database ready"""
-        patched_check.return_value = True 
+        patched_check.return_value = True # noqa 
         call_command('wait_for_db')
         patched_check.assert_called_once_with(databases=['default']) # noqa 
 
@@ -21,7 +21,7 @@ class CommandTests(SimpleTestCase):
     def test_wait_for_db_delay(self, patched_sleep, patched_check):
         """Test waiting for database when getting Operational error"""
         patched_check.side_effect = [Psycopg2OpError] * 2 + \
-            [OperationalError] * 3 + [True] 
+            [OperationalError] * 3 + [True] # noqa 
         # The first two times we call the mocked method. \
         # We want it to raise the pcycopg2 error, \ # noqa 
         # so it raises the error.
