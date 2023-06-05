@@ -26,6 +26,8 @@ services:
     image: postgres:13-alpine
     volumes:
       - dev-db-data:/var/lib/postgresql/data
+    expose:
+      - 5432
     environment:
       - POSTGRES_DB=devdb
       - POSTGRES_USER=devuser
