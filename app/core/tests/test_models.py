@@ -20,6 +20,7 @@ class ModelTest(TestCase):
         self.assertTrue(user.check_password(password))
 
     def test_new_user_email_normalized(self):
+        """Test normalize email for users"""
         sample_email = [
             ["test1@EXAMPLE.com", "test1@example.com"],
             ["Test2@Example.com", "Test2@example.com"],
@@ -29,3 +30,8 @@ class ModelTest(TestCase):
         for email, expected in sample_email:
             user = get_user_model().objects.create_user(email, "sample123")
             self.assertEqual(user.email, expected)
+
+    def test_new_user_without_email_raise_error(self):
+        """Test than creating the user with blank email"""
+        with self.assertRaises(ValueError):
+            get_user_model().objects.create_user("", "test123")
