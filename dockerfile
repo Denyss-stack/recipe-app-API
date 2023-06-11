@@ -11,6 +11,7 @@ EXPOSE 8000
 
 ARG DEV=false
 
+RUN pip install pytz
 RUN pip install flake8
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
