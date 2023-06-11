@@ -37,3 +37,9 @@ class AdminTest(TestCase):
         )  # /admin/core/user/1/change/ # noqa
         res = self.client.get(url)
         self.assertEqual(res.status_code, 200)
+
+    def test_add_new_user(self):
+        ulr = reverse("admin:core_user_add")
+        res = self.client.get(ulr)
+
+        self.assertEqual(res.status_code, 200)
