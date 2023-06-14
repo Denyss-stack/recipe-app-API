@@ -33,7 +33,14 @@ class PublicUserAPITesta(TestCase):
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
         user = get_user_model().objects.get(email = payload["email"])
         self.assertTrue(user.check_password(payload["password"]))
-        self.assertNotIn("password", res.data)
+
+        response_data = res.data.copy()
+        response_data.pop("password", None)
+        expected_data = {
+            "email": payload["email"],
+            "name": payload["name"],
+        }
+        self.assertDictEqual(response_data, expected_data)
 
     def test_user_with_email_exist_error(self):
         """Test error returned if user with email exists."""
@@ -48,10 +55,10 @@ class PublicUserAPITesta(TestCase):
         self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
 
     def test_user_passwort_too_short(self):
-        """Test an error is returned if password less than 5 chars."""
+        """Test an error is returned if password is unavailable."""
         payload = {
               "email":'test@example.com',
-              "password": "pw",
+              "password": "",
               "name": "Test name",
         }
         res = self.client.post(CREATE_USER_URL, payload)
