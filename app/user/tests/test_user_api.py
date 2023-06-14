@@ -15,16 +15,17 @@ CREATE_USER_URL = reverse('user:create')
 def create_user(**params):
     return get_user_model().objects.create_user(**params)
 
+
 class PublicUserAPITesta(TestCase):
     """"Test the public features of the user API."""
 
     def setUp(self):
-      self.client =APIClient()
+      self.client = APIClient()
 
     def test_create_user_success(self):
         """Test creating a user is successful."""
         payload = {
-            "email":'test@example.com',
+            "email": 'test@example.com',
             "password": "testpass123",
             "name": "Test name",
         }
@@ -45,7 +46,7 @@ class PublicUserAPITesta(TestCase):
     def test_user_with_email_exist_error(self):
         """Test error returned if user with email exists."""
         payload = {
-              "email":'test@example.com',
+              "email": 'test@example.com',
               "password": "testpass123",
               "name": "Test name",
         }
@@ -57,7 +58,7 @@ class PublicUserAPITesta(TestCase):
     def test_user_passwort_too_short(self):
         """Test an error is returned if password is unavailable."""
         payload = {
-              "email":'test@example.com',
+              "email":' test@example.com',
               "password": "",
               "name": "Test name",
         }
