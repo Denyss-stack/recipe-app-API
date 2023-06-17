@@ -10,7 +10,7 @@ from rest_framework import status
 
 
 CREATE_USER_URL = reverse("user:create")
-TOKEM_URL = reverse("user:token")
+TOKEN_URL = reverse("user:token")
 ME_URL = reverse("user:me")
 
 
