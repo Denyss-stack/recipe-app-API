@@ -96,7 +96,7 @@ class PrivateRecipeAPITest(TestCase):
     def test_get_recipe_detail(self):
         """Test get recipe detail."""
         recipe = create_recipe(user=self.user)
-        url = detail_URL(recipe_id)
+        url = detail_URL(recipe.id)
         res = self.client.get(url)
         serializer = RecipeDetailSerializer(recipe)
         self.assertEqual(res.data, serializer.data)
