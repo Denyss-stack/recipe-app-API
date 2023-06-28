@@ -51,7 +51,7 @@ class AuthTokenSerializer(serializers.Serializer):
             password=password,
         )
         if not user:
-            msg = _("Unabla to authenticate with provided credentials.")
+            msg = _("Unable to authenticate with provided credentials.")
             raise serializers.ValidationError(msg, code="authorization")
 
         attrs["user"] = user
