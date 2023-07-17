@@ -3,7 +3,7 @@ Djnago admin customization
 """
 from django.contrib import admin  # noqa
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User, Recipe, Tag
+from .models import User, Recipe, Tag, Ingredient
 from django.utils.translation import gettext_lazy as _
 
 
@@ -49,3 +49,4 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(User, UserAdmin)
 admin.site.register(Recipe)
 admin.site.register(Tag)
+admin.site.register(Ingredient)
