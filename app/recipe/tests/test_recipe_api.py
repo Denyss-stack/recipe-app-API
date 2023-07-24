@@ -372,11 +372,11 @@ class ImageUploadTests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
-        self.user = get_user_model().objects.create(
+        self.user = get_user_model().objects.create_user(
             "user@example.com",
             "pass123",
         )
-        self.client.force_authentucate(self.user)
+        self.client.force_authenticate(self.user)
         self.recipe = create_recipe(user=self.user)
 
     def tearDown(self):
@@ -384,9 +384,9 @@ class ImageUploadTests(TestCase):
         self.recipe.image.delete()
 
     def test_upload_image(self):
-        """Test uploading an image to a recip."""
+        """Test uploading an image to a recipe."""
         url = image_upload_url(self.recipe.id)
-        with tempfile.NamedTemporaryFile(suffix="jpg") as image_file:
+        with tempfile.NamedTemporaryFile(suffix=".jpg") as image_file:
             img = Image.new("RGB", (10, 10))
             img.save(image_file, format="JPEG")
             image_file.seek(0)
