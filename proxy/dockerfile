@@ -1,4 +1,5 @@
 FROM nginxinc/nginx-unprivileged:1-alpine
+FROM nginx
 LABEL maintainer = "Denyss-stack.com"
 
 COPY ./default.conf.tpl /etc/nginx/default.conf.tpl
