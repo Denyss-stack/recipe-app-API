@@ -1,4 +1,4 @@
-##About
+## About
 
 In this section l have created built a backend REST API using Python, Django, Django REST Framework, Docker, GitHub Actions, Postgres and Test Driven Development(TDD).
 
@@ -18,6 +18,6 @@ I was configured Swagger for browsing my APIs.
 
 ---
 
-###Demo
+### Demo
 Swagger endpionts
 ![Alt text](Screenshot_1.png)
