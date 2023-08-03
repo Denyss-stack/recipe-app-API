@@ -19,5 +19,5 @@ I configured Swagger for browsing my APIs.
 ---
 
 ### Demo
-<p>Swagger endpoints</p>
+Swagger endpoints
 ![Alt text](Screenshot_1.png)
